@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap");
+
+h1 {
+  font-weight: bold;
+  margin-top: 3rem;
+}
+
+p {
+  font-size: 12px;
+}
+
+a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+input {
+  width: 25rem;
+  margin-bottom: 1.3rem;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  outline: none;
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+  font-family: "Muli", sans-serif;
+  background: #fff;
+  color: #49425a;
+  transition: all 300ms ease;
+}
+
+label {
+  display: block;
+  text-align: initial;
+}
+select {
+  width: 25rem;
+  margin-bottom: 1.3rem;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  outline: none;
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+  font-family: "Muli", sans-serif;
+  background: #fff;
+  color: #49425a;
+  transition: all 300ms ease;
+}
+
+.checkout-page {
+  flex-direction: row;
+  justify-content: space-around;
+}
+.calendar-btn {
+  border: none;
+  font-size: 23px;
+  margin-top: 10px;
+}
+.calendar-btn:hover {
+  transition: 0.3s;
+  color: #6fad1d;
+  
+}
+
+#search-text {
+  background: #dbdbdb;
+  width: 240px;
+}
+
+.returnMarket-btn {
+  color: white;
+  background: #232323;
+  cursor: pointer;
+  display: inline-flex;
+  border-radius: 20px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  background-color: #232323;
+  background: linear-gradient(to left, #232323 50%, #525252 50%) right;
+  background-size: 200%;
+  transition: 0.4s ease-out;
+}
+
+.returnMarket-btn:hover {
+  background-position: left;
+  color: #ffffff;
+  background-color: white;
+}
+
+.checkout-btn {
+  cursor: pointer;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: none;
+  background-color: #6fae1d;
+  background: linear-gradient(to left, #6fae1d 50%, #ceeea4 50%) right;
+  background-size: 200%;
+  transition: 0.4s ease-out;
+}
+
+.checkout-btn:hover {
+  background-position: left;
+  color: #6fad1d;
+  background-color: white;
+}
+
+.shipping-form {
+  background-color: #ebf1eb;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  text-align: center;
+  margin: 3rem 2rem;
+}
+
+/* .container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  height: auto;
+  width: 480px;
+  max-width: 100%;
+} */
+
+.highlight {
+  background-color: rgb(0, 255, 136);
+}
+
+.error-border {
+  border: 2px solid red;
+}
+
+@media (max-width: 1000px) {
+  .checkout-page {
+    flex-direction: column;
+  }
+  .shipping-form {
+    align-items: center;
+    margin-top: 50px;
+  }
+}
+@media (max-width: 750px) {
+  select,
+  input {
+    width: 10rem;
+  }
+}

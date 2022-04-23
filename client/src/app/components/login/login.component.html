@@ -1,0 +1,19 @@
+
+<div class="container" id="container">
+  <div class="form-container sign-in-container">
+    <div class="login-form">
+      <h1>Log In</h1>
+      <p>to start to shop online</p>
+      <input type="text" placeholder="Username" [(ngModel)]="username" />
+      <input type="password" placeholder="Password" [(ngModel)]="password" />
+      <div class="error-div" *ngIf="stateService.isServerError">
+        *{{ stateService.serverError }}
+      </div>
+      <button class="sign-in" (click)="onLoginClick()">Sign In</button>
+      <br />
+    </div>
+    <p>
+      dont have account yet?<a style="font-size:18px ;" href="/register"><strong > Register</strong></a>
+    </p>
+  </div>
+</div>

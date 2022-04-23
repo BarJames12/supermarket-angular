@@ -1,0 +1,58 @@
+.parent {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  min-height: 70vh;
+  background-image: url("../../../photos/grocerybg2.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 10rem;
+  font-family: "Lato", sans-serif;
+  justify-content: space-evenly;
+}
+
+.left-div {
+  margin: 20px;
+}
+.left-div > a {
+  margin-top: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 18px 45px;
+  letter-spacing: 1px;
+  border: none;
+  background-color: #6fae1d;
+  background: linear-gradient(to left, #6fae1d 50%, #ceeea4 50%) right;
+  background-size: 200%;
+  transition: 0.4s ease-out;
+}
+.left-div > a:hover {
+  background-position: left;
+  color: #6fad1d;
+  background-color: white;
+}
+
+.left-div > p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.middle-div {
+  width: 30rem;
+  margin: 20px;
+}
+.right-div {
+  margin: 20px;
+}
+
+@media (max-width: 1000px) {
+  .parent {
+    flex-direction: column;
+  }
+}

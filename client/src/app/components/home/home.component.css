@@ -1,0 +1,17 @@
+.container {
+  width: 100vh;
+}
+.home-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 50vh;
+}
+
+.product-container {
+  display: inline-block;
+  text-align: center;
+  padding-top: 2rem;
+  margin: 1%;
+}

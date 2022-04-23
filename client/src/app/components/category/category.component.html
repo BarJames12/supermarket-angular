@@ -1,0 +1,48 @@
+<div class="sticky-top">
+  
+  <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+    <div class="categories">
+      <button
+        class="category-btn"
+        [routerLink]="['/home', 'all']"
+        routerLinkActive="active"
+        (click)="onAllProductClick()"
+      >
+        All Products
+      </button>
+      <div *ngFor="let category of stateService.categories">
+        <button
+          class="category-btn"
+          [routerLink]="['/home', category.categoryId]"
+          [value]="category.categoryId"
+          (click)="onCategoryClick($event)"
+        >
+          {{ category.categoryName }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapse-btn">
+    <button
+    class="collapse-down"
+    type="button"
+    (click)="collapse.toggle()"
+    *ngIf="isCollapsed"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="collapseExample"
+    >
+      <i class="fas fa-arrow-down"></i>
+    </button>
+    <button
+    class="collapse-up"
+    type="button"
+    (click)="collapse.toggle()"
+    *ngIf="!isCollapsed"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="collapseExample"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </div>
+</div>

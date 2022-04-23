@@ -1,0 +1,33 @@
+<div class="container-fluid register-page" id="container">
+  <div class="form-container sign-in-div">
+    <div class="signup-form">
+      <h1>Sign Up</h1>
+      <p>to start to shop online</p>
+      <input type="text" placeholder="Username*" [(ngModel)]="username" />
+
+      <input type="password" placeholder="Password*" [(ngModel)]="password" />
+      <input
+        type="password"
+        placeholder="Confirm Password*"
+        [(ngModel)]="confirmPassword"
+      />
+      <input type="text" placeholder="Email*" [(ngModel)]="email" />
+      <h6>Personal Information:</h6>
+      <input type="text" placeholder="First Name" [(ngModel)]="firstName" />
+      <input type="text" placeholder="Last Name" [(ngModel)]="lastName" />
+      <input type="text" placeholder="City*" [(ngModel)]="city" />
+      <input type="text" placeholder="Address*" [(ngModel)]="address" />
+      <div class="error-div" *ngIf="stateService.isServerError">
+        *{{ stateService.serverError }}
+      </div>
+      <div>
+        <p class="">Must Fill all the *</p>
+      </div>
+      <button class="sign-up" (click)="onSignupClick()">Sign Up</button>
+      <br />
+    </div>
+    <p>
+      Already have an account?<strong> <a href="/landingPage"> login</a></strong>
+    </p>
+  </div>
+</div>

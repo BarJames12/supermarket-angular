@@ -1,0 +1,179 @@
+<div class="checkout-page d-flex container">
+  <div class="inovice-div">
+    <input
+      type="text"
+      class="form-control"
+      id="search-text"
+      [formControl]="stateService.checkoutSearchValue"
+      placeholder="Search for product"
+      autofocus
+    />
+    <mdb-card>
+      <mdb-card-body>
+        <div class="table-responsive">
+          <table class="table product-table">
+            <thead class="mdb-color lighten-5">
+              <tr>
+                <th></th>
+                <th class="font-weight-bold">
+                  <strong>Product</strong>
+                </th>
+                <th class="font-weight-bold">
+                  <strong>Price</strong>
+                </th>
+                <th class="font-weight-bold">
+                  <strong>Amount</strong>
+                </th>
+                <th class="font-weight-bold">
+                  <strong>total Price</strong>
+                </th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let product of stateService.carts">
+                <th scope="row">
+                  <img
+                    src="{{ product.image }}"
+                    width="60px"
+                    alt=""
+                    class="img-fluid z-depth-0"
+                  />
+                </th>
+                <td>
+                  <h5 class="mt-3">
+                    <strong
+                      innerHTML="{{ product.productName | highlight }}"
+                    ></strong>
+                  </h5>
+                </td>
+                <td>{{ product.price | currency: "ILS" }}</td>
+
+                <td>
+                  <p>{{ product.amount }} pc</p>
+                </td>
+                <td>
+                  <h5 class="mt-3">
+                    <strong>{{
+                      product.price * product.amount | currency: "ILS"
+                    }}</strong>
+                  </h5>
+                </td>
+                <td></td>
+              </tr>
+
+              <tr>
+                <td>
+                  <h4 class="mt-2">
+                    <strong>Total</strong>
+                  </h4>
+                </td>
+                <td class="text-right">
+                  <h4 class="mt-2">
+                    <strong>{{
+                      stateService.getTotal() | currency: "ILS"
+                    }}</strong>
+                  </h4>
+                </td>
+                <td></td>
+                <td>
+                  <a class="returnMarket-btn" href="home" color="primary">
+                    Return to market
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+
+  <div class="checkout-form">
+    <div class="container" id="container">
+      <div class="form-container shipping-container">
+        <div class="shipping-form">
+          <h2>Personal Information:</h2>
+          <br />
+          <div>
+            <label> First Name*</label>
+            <input
+              (dblclick)="onFirstNameDbClick()"
+              type="text"
+              value="{{ firstName }}"
+              [(ngModel)]="firstName"
+            />
+          </div>
+
+          <div>
+            <label>Last Name*</label>
+            <input
+              (dblclick)="onLastNameDbClick()"
+              type="text"
+              value="{{ lastName }}"
+              [(ngModel)]="lastName"
+            />
+          </div>
+
+          <div>
+            <label>City*</label>
+            <select class="browser-default custom-select" [(ngModel)]="city">
+              <option *ngFor="let city of stateService.cities">
+                {{ city }}
+              </option>
+            </select>
+          </div>
+
+          <div>
+            <label>Address*</label>
+            <input
+              type="text"
+              (dblclick)="onaddressDbClick()"
+              value="{{ address }}"
+              [(ngModel)]="address"
+            />
+          </div>
+
+          <div>
+            <label>Shipping Date:</label> 
+<form class="form-inline">
+  <div class="form-group">
+    <div class="input-group">
+      <input class="form-control " placeholder="yyyy-mm-dd"
+             name="dp" [(ngModel)]="shippingDate" ngbDatepicker  [minDate]="minDate" onkeypress="return false"  #d="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="calendar-btn" (click)="d.toggle()" type="button"><i class="fas fa-calendar-alt"></i></button>
+      </div>
+    </div>
+  </div>
+</form>
+
+            <div class="payment-form">
+              <h3>Payment details:</h3>
+              <label>Credit Card*</label>
+              <input
+                type="text"
+                [(ngModel)]="creditNum"
+                maxlength="16"
+                minlength="16"
+                pattern="[0-9]*"
+                inputmode="numeric"
+              />
+            </div>
+          </div>
+          <div class="error-div" *ngIf="stateService.isServerError">
+            *{{ stateService.serverError }}
+          </div>
+
+          <p class="">Must Fill all the *</p>
+
+          <button class="checkout-btn" (click)="onCheckoutClick()">
+            Checkout
+          </button>
+          <br />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

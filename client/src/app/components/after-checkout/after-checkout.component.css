@@ -1,0 +1,19 @@
+.afterCheckout-div {
+  height: 70vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.afterCheckout-body {
+  width: 60%;
+  background-color: #ddeedd;
+  padding: 10px 30px;
+  height: 25rem;
+  border-radius: 10px;
+}
+.header-icon {
+      text-align: center;
+    font-size: 4rem;
+    color: #25b725;
+}

@@ -1,0 +1,80 @@
+<div class="productsCard">
+  <!-- <img
+    [src]="product.image"
+    alt="{{ product.productName }}"
+    width="250px"
+    class="card-img-top"
+  />
+
+  <div class="card-body">
+    <h5 class="card-title">{{ product.productName | titlecase }}</h5>
+    <p class="card-text">{{ product.price | currency: "ILS" }}</p>
+  </div>
+  <div class="card-footer">
+    <a
+      *ngIf="!isAddToCartBtnClicked && !this.stateService.isAdmin"
+      class="btn btn-primary btn-block"
+      (click)="isAddToCartBtnClicked = true"
+      >ADD</a
+    >
+    <a
+      *ngIf="!isAddToCartBtnClicked && this.stateService.isAdmin"
+      class="btn btn-primary btn-block"
+      (click)="onEditClick(product)"
+      (click)="this.stateService.isManageProductClicked = true"
+      >Manage</a
+    >
+    <div *ngIf="isAddToCartBtnClicked">
+      <div>
+        Amount:<input
+          type="number"
+          min="1"
+          onkeydown="return false"
+          [(ngModel)]="amount"
+          #itemAmount
+        />
+      </div>
+      <button [value]="amount" (click)="onOkClick(product)">Ok</button>
+      <button (click)="isAddToCartBtnClicked = false">Cancel</button>
+    </div>
+  </div> -->
+
+  <div class="wrapper">
+    <div class="container">
+      <div class="top">
+        <img
+    [src]="product.image"
+    alt="{{ product.productName }}"
+    width="500px"
+    class="card-img-top"
+  />
+      </div>
+      <div class="bottom" [ngClass]="{'clicked': buyClass==true}">
+        <div class="left">
+          <div class="details">
+            <p>{{ product.productName | titlecase }}</p>
+            <p class="product-price">{{ product.price | currency: "ILS" }}</p>
+          </div>
+          <div  *ngIf="!this.stateService.isAdmin"
+      (click)="buyClass = true" (click)="resetAmount()" class="buy" ><i class="fas fa-cart-plus"></i></div>
+          <div  (click)="onEditClick(product)" *ngIf="this.stateService.isAdmin"
+      class="buy" ><i class="fas fa-tools"></i></div>
+        </div>
+        <div *ngIf="!this.stateService.isAdmin" class="right">
+          <div *ngIf="amount"  class="done"> <button [value]="amount" class="ok-btn" (click)="onOkClick(product)"> <i class="fas fa-check"></i></button></div>
+          <div *ngIf="!amount"  class="done"> <button [value]="amount" class="ok-btn" (click)="buyClass=false"> <i class="fas fa-arrow-left"></i></button></div>
+          <div class="details">
+            <p>{{ product.productName | titlecase }}</p>
+            <input
+              style="width: 50px"
+              type="number"
+          min="0"
+          onkeydown="return false"
+          [(ngModel)]="amount"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+
+<div class="shopping-cart container animated fadeInLeft">
+
+  <div class="emptyCart-div" *ngIf="!stateService.carts?.length">
+    <div class="emptyCart-image">
+      <span class="emptyCart-bg"></span>
+      <div class="emptyCart-hedline">
+        <h3>Your Cart is empty </h3>
+        <p>Look like you haven't added <br> anything to your cart yet.</p>
+        <button (click)="headerComponent.onCartClick()" class="closCart-btn"> <i class="fas fa-arrow-left"></i> </button>
+      </div>
+    </div> 
+
+  </div>
+    
+  <div class="shopping-cart-header" *ngIf="stateService.carts?.length">
+    <div class="cart-top">
+      <button (click)="headerComponent.onCartClick()" class="closCart-btn"> <i class="fas fa-arrow-left"></i> </button>
+      <p *ngIf="stateService.carts?.length == 1"><b>Your Cart</b> , {{headerComponent.getTotalProduct()}} Item</p>
+      <p *ngIf="stateService.carts?.length > 1"><b>Your Cart</b> , {{headerComponent.getTotalProduct()}} Items</p>
+    </div>
+  <ul *ngFor="let product of stateService.carts" class="shopping-cart-items" >
+    <button
+      type="button"
+      (click)="onDeleteClick(product.productId)"
+    class="deleteItem-btn"
+    >
+      <i class="fas fa-trash"></i>
+    </button>
+
+    <li class="clearfix">
+      <img
+        src="{{ product.image }}"
+        width="100px"
+        alt=""
+        class="img-fluid z-depth-0"
+      />
+      <span class="item-name">{{ product.productName }}</span>
+      <span class="item-price">{{ product.price | currency: "ILS" }} </span>
+      <input
+        class="item-quantity"
+        type="number"
+        value="{{ product.amount }}"
+        min="1"
+        (change)="onAmountChange(product, $event)"
+        aria-label="Search"
+        class="form-control"
+        style="width: 100px"
+        onkeydown="return false"
+      />
+    </li>
+    <hr />
+  </ul> 
+</div>
+<div class="footer-cart" *ngIf="stateService.carts?.length">
+  <span style="padding-right: 50%; font-size: 24px;">Total: </span>
+  <span> <b>{{ stateService.getTotal() | currency: "ILS" }}</b> </span>
+  <button (click)="onMoveToCheckout()" (click)="headerComponent.onCartClick()" class="checkout-btn">Checkout<i class="fas fa-cash-register"></i> </button>
+</div>
+
+
+</div>

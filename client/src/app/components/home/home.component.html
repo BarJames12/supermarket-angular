@@ -1,0 +1,22 @@
+<app-category></app-category>
+
+<div class="container-fluid">
+  <app-admin-manage-product
+    *ngIf="this.stateService.isManageProductClicked"
+  ></app-admin-manage-product>
+
+  <div class="home-div">
+    
+
+    <div
+      class="product-container"
+      *ngFor="
+        let product of stateService.products
+          | category: stateService.categoryId
+          | searchFilter: this.stateService.searchText
+      "
+    >
+      <app-products-card [product]="product"></app-products-card>
+    </div>
+  </div>
+</div>

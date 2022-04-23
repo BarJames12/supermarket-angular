@@ -1,0 +1,25 @@
+<div class="container afterCheckout-div">
+  <div class="afterCheckout-header">
+    <div class="header-icon">
+      <span><i class="far fa-check-circle"></i></span>
+    </div>
+    <h1>The payment was succesfull!</h1>
+    <h3>Thank you for your order!</h3>
+    <p>
+      click for invoice:
+        <a  (click)="downloadInovice()" > 
+              <strong style="color: blue; cursor: pointer;"> download</strong> </a  >.
+    </p>
+  </div>
+
+  <div class="afterCheckout-body">
+    <h5>Order number:</h5>
+    <p>#{{ stateService.currentOrder }}</p>
+    <h5>Order Status:</h5>
+    <p>Order has been received to our store.</p>
+    <h5>Contact us for info:</h5>
+    <p>customer.service-instacart@gmail.com</p>
+    <a href="/landingPage">Continue Shopping </a>
+  </div>
+</div>
+

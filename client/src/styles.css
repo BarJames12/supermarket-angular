@@ -1,0 +1,23 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "animate.css";
+html,
+body {
+  margin: 0;
+  /* background-image: url("https://cdn.hipwallpaper.com/i/24/25/MDbPGJ.jpg"); */
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+  color: #333;
+}
+.error-div {
+  color: red;
+}
+
+.highlight {
+  background-color: rgb(224, 228, 0);
+}
+

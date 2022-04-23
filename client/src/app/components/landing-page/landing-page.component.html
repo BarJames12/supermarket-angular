@@ -1,0 +1,39 @@
+<div class="parent container-fluid">
+  <div class="left-div" *ngIf="!this.stateService.isLoggedIn">
+    <app-login></app-login>
+  </div>
+  <div class="left-div" *ngIf="this.stateService.isLoggedIn">
+    <p>
+      Welcome Back <b>{{ username }} !</b>
+    </p>
+    <a *ngIf="!this.stateService.isAdmin" href="home">Continue Shopping</a>
+    <a *ngIf="this.stateService.isAdmin" href="home">Go Manage</a>
+  </div>
+  <div class="middle-div">
+    <h1 class="h1-responsive font-weight-bold">Welcome to instacart</h1>
+    <hr class="hr-light" />
+    <h6 class="mb-3">
+      <b>
+        You fill the cart and we'll take care of the rest. From the selection of
+        our quality fruits to the delivery to your doorstep. And all this
+        instantly !
+      </b>
+    </h6>
+    <p>
+      Only our customers getting at least once a week 1 ~ 3 coupons for between
+      20%- 40% cheaper products from original price.
+    </p>
+  </div>
+  <div class="right-div">
+    <p>
+      available product in our store :<b>{{ totalProduct }}</b>
+    </p>
+    <p>
+      <b>{{ totalOrders }}</b> orders have been submitted in our store.
+    </p>
+    <p *ngIf="this.stateService.isLoggedIn && !this.stateService.isAdmin">
+      You have Opened Cart with total of :
+      <b>{{ stateService.getTotal() | currency: "ILS" }}</b>
+    </p>
+  </div>
+</div>

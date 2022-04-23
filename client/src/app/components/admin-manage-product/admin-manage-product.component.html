@@ -1,0 +1,74 @@
+<div class="manageProduct-div animated fadeInLeft">
+  <div class="manage-header">
+    <h3>Manage Mart <i class="fas fa-wrench"></i></h3>
+  </div>
+  <div class="closeManage-div">
+    <button class="closeManage-btn" (click)="onCloseManageClick()">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+  </div>
+  <div class="editForm-div manage" *ngIf="stateService.isManageProductClicked">
+    <h5 *ngIf="this.stateService.productToEdit">Edit Product:</h5>
+    <h5 *ngIf="!this.stateService.productToEdit">Add Product:</h5>
+    <label> Name:</label>
+    <input
+      type="text"
+      value="{{ stateService.productToEdit.productName }}"
+      [()]="productName"
+    />
+    <label> Price:</label>
+    <input
+      type="text"
+      value="{{ stateService.productToEdit.price }}"
+      [(ngModel)]="price"
+    />
+    <label> Category:</label>
+    <select
+      (change)="onOptionSelected($event)"
+      class="browser-default custom-select"
+    >
+      <option selected disabled hidden>
+        {{ this.stateService.productToEdit.categoryName }}
+      </option>
+      <option
+        *ngFor="let category of stateService.categories"
+        [value]="category.categoryId"
+      >
+        {{ category.categoryName }}
+      </option>
+    </select>
+
+    <label> Image:</label>
+    <input
+      type="text"
+      value="{{ stateService.productToEdit.image }}"
+      [(ngModel)]="image"
+    />
+
+    <div class="error-div" *ngIf="stateService.isServerError">
+      *{{ stateService.serverError }}
+    </div>
+    <button
+      class="manage-btns save-btn"
+      (click)="onUpdateProductClick()"
+      *ngIf="this.stateService.productToEdit"
+    >
+      Save
+      <i style="margin-left: 15px; font-size: 15px" class="far fa-save"></i>
+    </button>
+    <button
+      class="manage-btns add-btn"
+      (click)="onAddNewProductClick()"
+      *ngIf="!this.stateService.productToEdit"
+    >
+      <i class="fas fa-plus"></i>
+    </button>
+    <button
+      class="manage-btns addProd-btn"
+      *ngIf="this.stateService.productToEdit"
+      (click)="onClearEditToProductClick()"
+    >
+      Add product <i class="fas fa-plus"></i>
+    </button>
+  </div>
+</div>
