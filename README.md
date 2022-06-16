@@ -3,3 +3,4 @@
 </p>
 
 <b>Welcome to instacart </b>
+<p ><b >Angular,NodeJS, MySQl</b><br> ECommerce application. <br> Users can register, sign in to their accounts, and start to purchase whatever they needs. </p>
