@@ -8,55 +8,61 @@ import { CategoryModel } from '../models/CategoryModel';
 import { SuccessfulLoginServerResponse } from '../models/SuccessfulLoginServerResponse';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
   public products: IProducts[] = [];
   public categories: CategoryModel[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /*  Getting all products from server  */
   public getAllProducts() {
     const options = {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Authorization": "Bearer " + localStorage.getItem('token')
-      }
-    }
-    return this.http.get<{ products: IProducts }[]>("https://instacart-proj.herokuapp/products/", options)
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    };
+    return this.http.get<{ products: IProducts }[]>(
+      'https://instacart-proj.herokuapp.com/products/',
+      options
+    );
   }
-
-
 
   public updateProduct(newProductDetails: any) {
-    let token: any = (localStorage.getItem('token'))
-    let parsedToken = JSON.parse(token)
+    let token: any = localStorage.getItem('token');
+    let parsedToken = JSON.parse(token);
 
     const options = {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        Authorization: `Bearer ${parsedToken.token}`
-      }
-    }
-    return this.http.put<any>("https://instacart-proj.herokuapp/products/", newProductDetails, options);
+        Authorization: `Bearer ${parsedToken.token}`,
+      },
+    };
+    return this.http.put<any>(
+      'https://instacart-proj.herokuapp.com/products/',
+      newProductDetails,
+      options
+    );
   }
 
-  public addNewProduct(newProduct: any): Observable<SuccessfulLoginServerResponse> {
-    let token: any = (localStorage.getItem('token'))
-    let parsedToken = JSON.parse(token)
+  public addNewProduct(
+    newProduct: any
+  ): Observable<SuccessfulLoginServerResponse> {
+    let token: any = localStorage.getItem('token');
+    let parsedToken = JSON.parse(token);
 
     const options = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        Authorization: `Bearer ${parsedToken.token}`
-      }
-    }
-    return this.http.post<SuccessfulLoginServerResponse>(`https://instacart-proj.herokuapp/products/`, newProduct, options)
+        Authorization: `Bearer ${parsedToken.token}`,
+      },
+    };
+    return this.http.post<SuccessfulLoginServerResponse>(
+      `https://instacart-proj.herokuapp.com/products/`,
+      newProduct,
+      options
+    );
   }
-
-
-
-
-
 }
