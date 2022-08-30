@@ -15,7 +15,7 @@ const server = express();
 dotenv.config();
 server.use(bodyParser.json({ limit: "30mb", extended: true }));
 server.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-server.use(cors({ origin: "http://localhost:4200" })); //angular
+server.use(cors()); //angular
 
 
 const __dirname = path.resolve();

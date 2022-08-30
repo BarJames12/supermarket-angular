@@ -146,7 +146,6 @@ async function getShippingDates() {
 ORDER BY shippingDate ASC`;
   try {
     let shippingDates = await connection.execute(sql);
-    console.log(shippingDates);
     return shippingDates;
   } catch (e) {
     throw new ServerError(ErrorType.GENERAL_ERROR, shippingDates, e);

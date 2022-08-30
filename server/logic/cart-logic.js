@@ -40,13 +40,14 @@ async function createCart(userId) {
   for (let i = 0; i < carts.length; i++) {
     if (!carts[i].isOpenCart==1) {
       cartId = carts[i].cartId;
+      console.log(cartId);
     }
   }
   return cartId;
 }
 
 async function getDate() {
-  today = new Date();
+  let today = new Date();
   let dd = today.getDate();
   let mm = today.getMonth() + 1;
   let yyyy = today.getFullYear();
@@ -66,7 +67,7 @@ async function getDate() {
     hour = "0" + hour;
   }
   today = yyyy + "-" + mm + "-" + dd;
-  now = hour + ":" + min;
+ let now = hour + ":" + min;
 
   const fixedDate = today + " " + now;
   return fixedDate;
@@ -157,7 +158,7 @@ async function getShippingDates() {
 
 async function checkIfOrderAvailabale(allShippingDates) {
   let unavilableDates = [];
-  for (i = 0; i < allShippingDates.length - 2; i++) {
+  for (let i = 0; i < allShippingDates.length - 2; i++) {
     if (
       allShippingDates[i].shippingDate == allShippingDates[i + 1].shippingDate &&
       allShippingDates[i + 1].shippingDate == allShippingDates[i + 2].shippingDate

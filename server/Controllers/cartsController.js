@@ -52,7 +52,6 @@ router.post("/checkout", async (request, response, next) => {
   try {
     let userData = await cacheModule.extractUserDataFromCache(request);
     let userId = userData.userId;
-    // let userId = 6;
     let userInfo = request.body;
 
     let cartDetails = await cartLogic.getCartId(userId);

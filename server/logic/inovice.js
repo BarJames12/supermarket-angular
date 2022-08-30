@@ -30,7 +30,7 @@ async function newInvoice(orderId, userInfo, cartDetails, path) {
   let unitPrice = items[0].map((x) => x.price);
   let itemAmount = items[0].map((x) => x.amount);
 
-  for (i = 0; i < items[0].length; i++) {
+  for (let i = 0; i < items[0].length; i++) {
     let totalPrice = 0;
     totalPrice = unitPrice[i] * itemAmount[i];
     const item = productName[i];

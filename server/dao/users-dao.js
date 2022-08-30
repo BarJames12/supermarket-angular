@@ -1,6 +1,6 @@
 import connection from "./connection-wrapper.js";
 import * as ErrorType from "../errors/error-type.js";
-import * as ServerError from "../errors/server-error.js";
+import ServerError from "../errors/server-error.js";
 
 async function isUserExistByUserName(registrationData) {
   let sql = `SELECT * FROM Users WHERE username=? `;
@@ -53,17 +53,15 @@ async function login(username, password) {
 
 async function getUserInfo(userId) {
   let sql = `SELECT first_name as firstName, last_name AS lastName ,city,address 
-FROM supermarket.users
-where user_id=?
-`;
+FROM users
+WHERE user_id=?`;
 
   // console.log(loginData);
   let parameters = [userId];
 
-
   try {
     let userPersonalInfo = await connection.executeWithParameters(sql, parameters);
-    console.log(userPersonalInfo);
+
     return userPersonalInfo;
   } catch (e) {
     throw new ServerError(ErrorType.GENERAL_ERROR, JSON.stringify(userId), e);
