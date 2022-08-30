@@ -22,15 +22,13 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": [ 
+            "assets": ["src/favicon.ico", "src/assets", "src/_redirects"],
+            "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "node_modules/animate.css/animate.min.css",
               "src/styles.css"
             ],
-            "scripts": [
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": ["./node_modules/bootstrap/dist/js/bootstrap.min.js"]
           },
           "configurations": {
             "production": {
@@ -98,6 +96,6 @@
       }
     }
   },
-  
+
   "defaultProject": "supermarket"
 }
