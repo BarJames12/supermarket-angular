@@ -1,7 +1,6 @@
-const ErrorType = require("../errors/error-type");
-const ServerError = require("../errors/server-error");
-const pdfkit = require("pdfkit");
-const fs = require("fs");
+import fs from "fs"
+import pdfkit from "pdfkit"
+
 
 async function newInvoice(orderId, userInfo, cartDetails, path) {
   let document = new pdfkit({ margin: 50 });
@@ -57,6 +56,6 @@ function generateTableRow(doc, y, c1, c2, c3, c4, c5) {
     .text(c5, 0, y);
 }
 
-module.exports = {
+export default {
   newInvoice,
 };

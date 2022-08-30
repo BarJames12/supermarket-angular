@@ -1,8 +1,10 @@
-const usersLogic = require("../logic/users-logic");
-const cartLogic = require("../logic/cart-logic");
-const express = require("express");
+import  express  from "express";
+import usersLogic from "../logic/users-logic.js"
+import cartLogic from "../logic/cart-logic.js"
+import cacheModule from "../logic/cache-module.js"
 const router = express.Router();
-const cacheModule = require("../logic/cache-module");
+
+
 router.post("/", async (request, response, next) => {
   // Extracting the JSON from the packet's BODY
   let registrationData = request.body;
@@ -39,4 +41,4 @@ router.get("/", async (request, response, next) => {
   }
 });
 
-module.exports = router;
+export default router;

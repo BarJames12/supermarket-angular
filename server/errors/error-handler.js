@@ -16,4 +16,4 @@ let errorHandler = (e, request, response, next) => {
     response.status(700).json({ error: "General error" });
 }
 
-module.exports = errorHandler;
+export default errorHandler;

@@ -1,6 +1,6 @@
-const ErrorType = require("../errors/error-type");
-const ServerError = require("../errors/server-error");
-let connection = require("./connection-wrapper");
+import connection from "./connection-wrapper.js";
+import * as ErrorType from "../errors/error-type.js";
+import * as ServerError from "../errors/server-error.js";
 
 async function isUserExistByUserName(registrationData) {
   let sql = `SELECT * FROM Users WHERE username=? `;
@@ -70,7 +70,7 @@ where user_id=?
   }
 }
 
-module.exports = {
+export default {
   addUser,
   login,
   isUserExistByUserName,

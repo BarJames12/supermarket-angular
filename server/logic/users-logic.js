@@ -1,10 +1,9 @@
-const usersDao = require("../dao/users-dao");
-const crypto = require("crypto");
-const jwt = require("jsonwebtoken");
-const config = require("./config.json");
-const ErrorType = require("../errors/error-type");
-const ServerError = require("../errors/server-error");
-const cacheModule = require("../logic/cache-module");
+import usersDao from "../dao/users-dao.js";
+import crypto from "crypto";
+import jwt from "jsonwebtoken";
+import * as ErrorType from "../errors/error-type.js";
+import * as ServerError from "../errors/server-error.js";
+import cacheModule from "../logic/cache-module.js";
 
 // Hash
 const saltRight = "sdkjfhdskajh";
@@ -84,7 +83,7 @@ async function login(username, password) {
   if (!userDetails) {
     throw new ServerError(ErrorType.UNAUTHORIZED);
   }
-  const token = jwt.sign({ sub: username }, config.secret);
+  const token = jwt.sign({ sub: username }, process.env.JWT_KEY);
 
   cacheModule.set(token, { userType: userDetails.userType, userId: userDetails.userId });
   console.log(username);
@@ -96,7 +95,7 @@ async function getUserInfo(userId) {
   return userPersonalInfo;
 }
 
-module.exports = {
+export default {
   addUser,
   login,
   getUserInfo,

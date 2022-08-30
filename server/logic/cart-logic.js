@@ -1,6 +1,6 @@
-const cartsDao = require("../dao/carts-dao");
-const ErrorType = require("../errors/error-type");
-const ServerError = require("../errors/server-error");
+import cartsDao from "../dao/carts-dao.js";
+import * as ErrorType from "../errors/error-type.js";
+import * as ServerError from "../errors/server-error.js";
 
 async function getCartId(userId) {
   let carts = await cartsDao.getCarts(userId);
@@ -168,7 +168,7 @@ async function checkIfOrderAvailabale(allShippingDates) {
   return unavilableDates;
 }
 
-module.exports = {
+export default {
   getCartId,
   createCart,
   addToCart,

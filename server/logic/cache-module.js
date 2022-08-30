@@ -19,7 +19,7 @@ function extractUserDataFromCache(request) {
   return userData;
 }
 
-module.exports = {
+export default {
   set,
   get,
   extractUserDataFromCache,

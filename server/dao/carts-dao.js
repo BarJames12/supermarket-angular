@@ -1,6 +1,7 @@
-let connection = require("./connection-wrapper");
-const ErrorType = require("../errors/error-type");
-const ServerError = require("../errors/server-error");
+import * as ErrorType from "../errors/error-type.js";
+import * as ServerError from "../errors/server-error.js";
+import connection from "./connection-wrapper.js";
+
 
 async function getCarts(userId) {
   const sql = `SELECT c.cart_id AS cartId,
@@ -152,7 +153,7 @@ ORDER BY shippingDate ASC`;
   }
 }
 
-module.exports = {
+export default {
   getCartData,
   getCarts,
   createCart,

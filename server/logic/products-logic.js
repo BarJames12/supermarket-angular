@@ -1,6 +1,6 @@
-const productsDao = require("../dao/products-dao");
-const ErrorType = require("../errors/error-type");
-const ServerError = require("../errors/server-error");
+import productsDao from "../dao/products-dao.js";
+import * as ErrorType from "../errors/error-type.js";
+import * as ServerError from "../errors/server-error.js";
 
 async function getAllProducts() {
   let allProducts = await productsDao.getAllProducts();
@@ -33,7 +33,7 @@ async function validateAdminManage(newProduct) {
   }
 }
 
-module.exports = {
+export default {
   getAllProducts,
   editProduct,
   addNewProduct,

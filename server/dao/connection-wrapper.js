@@ -1,12 +1,32 @@
-const mysql = require("mysql2");
-
+import mysql from "mysql2";
 // Connection = קו תקשורת למסד הנתונים
-const connection = mysql.createConnection({
-  host: "localhost", // Computer
-  user: "root", // Username
-  password: "1234", // Password
-  database: "supermarket", // Database name
-});
+// const connection = mysql.createConnection({
+//   host: "eu-cdbr-west-03.cleardb.net", // Computer
+//   user: "b2eb22aa79425d", // Username
+//   password: "ff4de926 ", // Password
+//   database: "heroku_dab58e13d0033f0", // Database name
+
+//   host: "localhost", // Computer
+//   user: "root", // Username
+//   password: "1234", // Password
+//   database: "vacations", // Database name
+
+// });
+
+let connection;
+console.log(process.env.JAWSDB_URL);
+if (process.env.JAWSDB_URL) {
+  console.log("jaws");
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+  console.log("localDB");
+  connection = mysql.createConnection({
+    host: "localhost", // Computer
+    user: "root", // Username
+    password: "1234", // Password
+    database: "vacations", // Database name
+  });
+}
 
 // Connect to the database:
 connection.connect((err) => {
@@ -45,7 +65,7 @@ function executeWithParameters(sql, parameters) {
   });
 }
 
-module.exports = {
+export default {
   execute,
   executeWithParameters,
 };

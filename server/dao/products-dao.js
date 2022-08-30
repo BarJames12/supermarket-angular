@@ -1,6 +1,6 @@
-let connection = require("./connection-wrapper");
-const ErrorType = require("../errors/error-type");
-const ServerError = require("../errors/server-error");
+import connection from "./connection-wrapper.js";
+import * as ErrorType from "../errors/error-type.js";
+import * as ServerError from "../errors/server-error.js";
 
 async function getAllProducts() {
   const sql = `SELECT p.product_id AS productId ,p.product_name AS productName ,p.product_price AS price, p.category_id AS categoryId , c.category_name AS categoryName ,p.image 
@@ -54,7 +54,7 @@ VALUES (?,?,?,?);`;
 }
 
 
-module.exports = {
+export default {
   getAllProducts,
   editProduct,
   addNewProduct,

@@ -1,7 +1,7 @@
-const express = require("express");
+import  express  from "express"
+import productsLogic from "../logic/products-logic.js"
+
 const router = express.Router();
-const productsLogic = require("../logic/products-logic");
-const cacheModule = require("../logic/cache-module");
 
 router.get("/", async (request, response, next) => {
   try {
@@ -64,4 +64,4 @@ router.post("/", async (request, response, next) => {
 
 
 
-module.exports = router;
+export default router;

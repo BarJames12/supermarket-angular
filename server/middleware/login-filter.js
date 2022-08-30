@@ -1,6 +1,6 @@
-const { request } = require("express");
-const expressJwt = require("express-jwt");
-const config = require("../logic/config.json");
+import request from "express";
+import expressJwt from "express-jwt";
+import * as config from "../logic/config.json" assert { type: "json" };
 
 // Extracting the text from the secret's JSON
 let { secret } = config;
@@ -8,7 +8,6 @@ let { secret } = config;
 let whiteListUrls = new Set();
 whiteListUrls.add("users/login");
 whiteListUrls.add("users/");
-
 
 function authenticateJwtRequestToken() {
   // Load secret into
@@ -24,6 +23,4 @@ function authenticateJwtRequestToken() {
   });
 }
 
-
-
-module.exports = authenticateJwtRequestToken;
+export default authenticateJwtRequestToken;

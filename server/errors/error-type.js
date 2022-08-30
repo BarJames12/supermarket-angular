@@ -74,4 +74,4 @@ let ErrorType = {
   },
 };
 
-module.exports = ErrorType;
+export default ErrorType;

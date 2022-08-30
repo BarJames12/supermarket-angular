@@ -13,11 +13,11 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   public login(userModel: UserModel): Observable<SuccessfulLoginServerResponse> {
-    return this.http.post<SuccessfulLoginServerResponse>("http://localhost:3001/users/login", userModel);
+    return this.http.post<SuccessfulLoginServerResponse>("https://instacart-proj.herokuapp/users/login", userModel);
   }
 
   public signup(userModel: UserModel): Observable<SuccessfulLoginServerResponse> {
-    return this.http.post<SuccessfulLoginServerResponse>("http://localhost:3001/users", userModel);
+    return this.http.post<SuccessfulLoginServerResponse>("https://instacart-proj.herokuapp/users", userModel);
   }
 
   public getPersonalInfo() {
@@ -30,7 +30,7 @@ export class UsersService {
         Authorization: `Bearer ${parsedToken.token}`
       }
     }
-    return this.http.get<any>("http://localhost:3001/users/", options)
+    return this.http.get<any>("https://instacart-proj.herokuapp/users/", options)
   }
 
 }

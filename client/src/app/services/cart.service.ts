@@ -21,7 +21,7 @@ export class CartService {
 
       }
     }
-    return this.http.get<any>("http://localhost:3001/carts/", options)
+    return this.http.get<any>("https://instacart-proj.herokuapp/carts/", options)
   }
 
   public updateCart(productToUpdate: any) {
@@ -34,7 +34,7 @@ export class CartService {
         Authorization: `Bearer ${parsedToken.token}`
       }
     }
-    this.http.put<any>("http://localhost:3001/carts/", productToUpdate, options).subscribe((response) => { response });
+    this.http.put<any>("https://instacart-proj.herokuapp/carts/", productToUpdate, options).subscribe((response) => { response });
   }
 
 
@@ -48,7 +48,7 @@ export class CartService {
         Authorization: `Bearer ${parsedToken.token}`
       }
     }
-    this.http.delete<any>(`http://localhost:3001/carts/${cartId}/${productId}`, options).subscribe((response) => { response });
+    this.http.delete<any>(`https://instacart-proj.herokuapp/carts/${cartId}/${productId}`, options).subscribe((response) => { response });
   }
 
   public addToCart(productToAdd: any) {
@@ -61,7 +61,7 @@ export class CartService {
         Authorization: `Bearer ${parsedToken.token}`
       }
     }
-    this.http.post<any>(`http://localhost:3001/carts/`, productToAdd, options).subscribe((response) => { response });
+    this.http.post<any>(`https://instacart-proj.herokuapp/carts/`, productToAdd, options).subscribe((response) => { response });
   }
 
   public checkout(checkoutDeatils: any): Observable<SuccessfulLoginServerResponse> {
@@ -74,26 +74,26 @@ export class CartService {
         Authorization: `Bearer ${parsedToken.token}`
       }
     }
-    return this.http.post<SuccessfulLoginServerResponse>(`http://localhost:3001/carts/checkout`, checkoutDeatils, options)
+    return this.http.post<SuccessfulLoginServerResponse>(`https://instacart-proj.herokuapp/carts/checkout`, checkoutDeatils, options)
       
   }
 
   public getTotalOrders() {
-    return this.http.get("http://localhost:3001/carts/totalOrder")
+    return this.http.get("https://instacart-proj.herokuapp/carts/totalOrder")
   }
 
   public getUnavailableOrderDates() {
-    return this.http.get("http://localhost:3001/carts/all-shippingDates")
+    return this.http.get("https://instacart-proj.herokuapp/carts/all-shippingDates")
   }
 
   public getCurrnetOrderId() {
-    return this.http.get("http://localhost:3001/carts/get-current-orderId")
+    return this.http.get("https://instacart-proj.herokuapp/carts/get-current-orderId")
   }
 
   
   public download(file: String) {
     const body = { fileName: file }
-    return this.http.post("http://localhost:3001/carts/download",body,{
+    return this.http.post("https://instacart-proj.herokuapp/carts/download",body,{
       responseType : 'blob',
       headers: new HttpHeaders().append('Content-Type', 'application/json')
   });

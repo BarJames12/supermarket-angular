@@ -24,7 +24,7 @@ export class ProductService {
         "Authorization": "Bearer " + localStorage.getItem('token')
       }
     }
-    return this.http.get<{ products: IProducts }[]>("http://localhost:3001/products/", options)
+    return this.http.get<{ products: IProducts }[]>("https://instacart-proj.herokuapp/products/", options)
   }
 
 
@@ -39,7 +39,7 @@ export class ProductService {
         Authorization: `Bearer ${parsedToken.token}`
       }
     }
-    return this.http.put<any>("http://localhost:3001/products/", newProductDetails, options);
+    return this.http.put<any>("https://instacart-proj.herokuapp/products/", newProductDetails, options);
   }
 
   public addNewProduct(newProduct: any): Observable<SuccessfulLoginServerResponse> {
@@ -52,7 +52,7 @@ export class ProductService {
         Authorization: `Bearer ${parsedToken.token}`
       }
     }
-    return this.http.post<SuccessfulLoginServerResponse>(`http://localhost:3001/products/`, newProduct, options)
+    return this.http.post<SuccessfulLoginServerResponse>(`https://instacart-proj.herokuapp/products/`, newProduct, options)
   }
 
 
