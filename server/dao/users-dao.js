@@ -14,7 +14,7 @@ async function addUser(registrationData) {
   const sql = `INSERT INTO Users (username ,password ,first_name ,last_name ,email ,city, address )
 VALUES (?,?,?,?,?,?,?);`;
 
-  parameters = [
+ let parameters = [
     registrationData.username,
     registrationData.password,
     registrationData.firstName,
