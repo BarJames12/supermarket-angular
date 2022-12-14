@@ -11,7 +11,7 @@ async function isUserExistByUserName(registrationData) {
 
 async function addUser(registrationData) {
   console.log(registrationData);
-  const sql = `INSERT INTO Users (username ,password ,first_name ,last_name ,email ,city, address )
+  const sql = `INSERT INTO users (username ,password ,first_name ,last_name ,email ,city, address )
 VALUES (?,?,?,?,?,?,?);`;
 
  let parameters = [
@@ -34,7 +34,7 @@ VALUES (?,?,?,?,?,?,?);`;
 }
 
 async function login(username, password) {
-  let sql = `SELECT user_id AS userId , first_name AS "firstName", user_type AS "userType" FROM Users WHERE username=? and password =?
+  let sql = `SELECT user_id AS userId , first_name AS "firstName", user_type AS "userType" FROM users WHERE username=? and password =?
 `;
 
   // console.log(loginData);

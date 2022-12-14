@@ -25,7 +25,7 @@
     </p>
   </div>
   <div class="right-div">
-    <p>
+    <p *ngIf="this.stateService.isLoggedIn">
       available product in our store :<b>{{ totalProduct }}</b>
     </p>
     <p>

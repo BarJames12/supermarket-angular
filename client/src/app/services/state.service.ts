@@ -5,12 +5,10 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { CategoryModel } from '../models/CategoryModel';
 import { ICart } from '../models/ICart';
 import { ProductService } from './products.service';
-
 @Injectable({
   providedIn: 'root'
 })
 export class StateService {
-
   public products: any[] = [];
   public categories: CategoryModel[] = [];
   public categoryId: any;

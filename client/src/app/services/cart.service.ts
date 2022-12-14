@@ -2,11 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SuccessfulLoginServerResponse } from '../models/SuccessfulLoginServerResponse';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
+  baseUrl = environment.baseUrl;
+
   constructor(private http: HttpClient) {}
   public getCart() {
     let token: any = localStorage.getItem('token');
@@ -19,7 +22,7 @@ export class CartService {
       },
     };
     return this.http.get<any>(
-      'https://instacart-proj.herokuapp.com/carts/',
+      `${this.baseUrl}/carts/`,
       options
     );
   }
@@ -36,7 +39,7 @@ export class CartService {
     };
     this.http
       .put<any>(
-        'https://instacart-proj.herokuapp.com/carts/',
+        `${this.baseUrl}/carts/`,
         productToUpdate,
         options
       )
@@ -57,7 +60,7 @@ export class CartService {
     };
     this.http
       .delete<any>(
-        `https://instacart-proj.herokuapp.com/carts/${cartId}/${productId}`,
+        `${this.baseUrl}/carts/${cartId}/${productId}`,
         options
       )
       .subscribe((response) => {
@@ -77,7 +80,7 @@ export class CartService {
     };
     this.http
       .post<any>(
-        `https://instacart-proj.herokuapp.com/carts/`,
+        `${this.baseUrl}/carts/`,
         productToAdd,
         options
       )
@@ -99,7 +102,7 @@ export class CartService {
       },
     };
     return this.http.post<SuccessfulLoginServerResponse>(
-      `https://instacart-proj.herokuapp.com/carts/checkout`,
+      `${this.baseUrl}/carts/checkout`,
       checkoutDeatils,
       options
     );
@@ -107,26 +110,26 @@ export class CartService {
 
   public getTotalOrders() {
     return this.http.get(
-      'https://instacart-proj.herokuapp.com/carts/totalOrder'
+      `${this.baseUrl}/carts/totalOrder`
     );
   }
 
   public getUnavailableOrderDates() {
     return this.http.get(
-      'https://instacart-proj.herokuapp.com/carts/all-shippingDates'
+      `${this.baseUrl}/carts/all-shippingDates`
     );
   }
 
   public getCurrnetOrderId() {
     return this.http.get(
-      'https://instacart-proj.herokuapp.com/carts/get-current-orderId'
+      `${this.baseUrl}/carts/get-current-orderId`
     );
   }
 
   public download(file: String) {
     const body = { fileName: file };
     return this.http.post(
-      'https://instacart-proj.herokuapp.com/carts/download',
+      `${this.baseUrl}/carts/download`,
       body,
       {
         responseType: 'blob',

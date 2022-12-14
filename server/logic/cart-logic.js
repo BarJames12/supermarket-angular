@@ -35,6 +35,7 @@ async function getCartId(userId) {
 
 async function createCart(userId) {
   let date = await getDate();
+  let cartId;
   await cartsDao.createCart(userId, date);
   let carts = await cartsDao.getCarts(userId);
   for (let i = 0; i < carts.length; i++) {

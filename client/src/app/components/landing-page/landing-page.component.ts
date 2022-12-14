@@ -61,7 +61,7 @@ export class LandingPageComponent implements OnInit {
       this.totalProduct = total.length
     }, error => {
       this.stateService.toast.error(`Some Server errors... try again later.`)
-      alert('Server Error ' + JSON.stringify(error));
+      console.log('Server Error ' + JSON.stringify(error));
     })
   }
 

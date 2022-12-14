@@ -3,17 +3,19 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SuccessfulLoginServerResponse } from '../models/SuccessfulLoginServerResponse';
 import { UserModel } from '../models/UserModel';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
+  baseUrl = environment.baseUrl;
   constructor(private http: HttpClient) {}
 
   public login(
     userModel: UserModel
   ): Observable<SuccessfulLoginServerResponse> {
     return this.http.post<SuccessfulLoginServerResponse>(
-      'https://instacart-proj.herokuapp.com/users/login',
+      `${this.baseUrl}/users/login`,
       userModel
     );
   }
@@ -22,7 +24,7 @@ export class UsersService {
     userModel: UserModel
   ): Observable<SuccessfulLoginServerResponse> {
     return this.http.post<SuccessfulLoginServerResponse>(
-      'https://instacart-proj.herokuapp.com/users',
+      `${this.baseUrl}/users`,
       userModel
     );
   }
@@ -37,9 +39,6 @@ export class UsersService {
         Authorization: `Bearer ${parsedToken.token}`,
       },
     };
-    return this.http.get<any>(
-      'https://instacart-proj.herokuapp.com/users/',
-      options
-    );
+    return this.http.get<any>(`${this.baseUrl}/users/`, options);
   }
 }

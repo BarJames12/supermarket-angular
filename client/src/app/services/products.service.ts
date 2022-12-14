@@ -6,11 +6,12 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { CategoryModel } from '../models/CategoryModel';
 import { SuccessfulLoginServerResponse } from '../models/SuccessfulLoginServerResponse';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
+  baseUrl = environment.baseUrl;
   public products: IProducts[] = [];
   public categories: CategoryModel[] = [];
 
@@ -25,7 +26,7 @@ export class ProductService {
       },
     };
     return this.http.get<{ products: IProducts }[]>(
-      'https://instacart-proj.herokuapp.com/products/',
+      `${this.baseUrl}/products/`,
       options
     );
   }
@@ -41,7 +42,7 @@ export class ProductService {
       },
     };
     return this.http.put<any>(
-      'https://instacart-proj.herokuapp.com/products/',
+      `${this.baseUrl}/products/`,
       newProductDetails,
       options
     );
@@ -60,7 +61,7 @@ export class ProductService {
       },
     };
     return this.http.post<SuccessfulLoginServerResponse>(
-      `https://instacart-proj.herokuapp.com/products/`,
+      `${this.baseUrl}/products/`,
       newProduct,
       options
     );
